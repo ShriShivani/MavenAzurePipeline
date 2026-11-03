@@ -1,0 +1,18 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: Maven@4
+    displayName: 'Build Java application using Maven'
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.17'
+      jdkArchitectureOption: 'x64'
+      mavenVersionOption: 'Default'
+      publishJUnitResults: false
+      goals: 'clean package'
